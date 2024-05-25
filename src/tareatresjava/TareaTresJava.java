@@ -29,20 +29,26 @@ public class TareaTresJava {
             System.out.println("2. Votaciones");
             System.out.println("3. Salir");
             System.out.println("Ingrese una opcion: ");
-            options = scanner.nextInt();
 
-            switch (options) {
-                case 1:
-                    sets();
-                    break;
-                case 2:
-                    votes();
-                    break;
-                case 3:
-                    System.out.println("Saliendo del programa...");
-                    System.exit(0);
-                default:
-                    System.out.println("Digite un valor que concuerde con las opciones...");
+            if (scanner.hasNextInt()) {
+                options = scanner.nextInt();
+
+                switch (options) {
+                    case 1:
+                        sets();
+                        break;
+                    case 2:
+                        voteSystem();
+                        break;
+                    case 3:
+                        System.out.println("Saliendo del programa...");
+                        System.exit(0);
+                    default:
+                        System.out.println("Ingrese una opcion valida. Intentelo de nuevo!");
+                }
+            } else {
+                scanner.next();
+                System.out.println("Ingrese una opcion valida. Intentelo de nuevo!");
             }
         }
     }
@@ -95,7 +101,82 @@ public class TareaTresJava {
         }
     }
 
-    public static void votes() {
+    public static void voteSystem() {
+        Scanner scanner = new Scanner(System.in);
+        int options;
+        while (true) {
+            System.out.println("Menu Sistema de Votacion: ");
+            System.out.println("1. Votar");
+            System.out.println("2. Reporte 1");
+            System.out.println("3. Reporte 2");
+            System.out.println("4. Reporte 3");
+            System.out.println("5. Regresar al menu principal");
+            System.out.println("Ingrese una de las opciones: ");
+
+            if (scanner.hasNextInt()) {
+                options = scanner.nextInt();
+
+                switch (options) {
+                    case 1:
+                        vote();
+                        break;
+                    case 2:
+                        firstReport();
+                        break;
+                    case 3:
+                        secondReport();
+                        break;
+                    case 4:
+                        thirdReport();
+                        break;
+                    case 5:
+                        System.out.println("Saliendo al menu principal...");
+                        return;
+                    default:
+                        System.out.println("Ingrese una opcion valida. Intentelo de nuevo!");
+                }
+            } else {
+                scanner.next();
+                System.out.println("Ingrese una opcion valida. Intentelo de nuevo.");
+            }
+
+        }
+
+    }
+
+    public static void vote() {
+        Scanner scanner = new Scanner(System.in);
+
+        String candidateA = "Tomas Shelby";
+        String candidateB = "Francisco Virgil";
+        String candidateC = "Lissia Quiros";
+
+        while (true) {
+            System.out.println("Ingrese su edad: ");
+            if (scanner.hasNextInt()) {
+                
+                int edad = scanner.nextInt();
+                if (edad < 18) {
+                    System.out.println("Usted es menor de edad, no puede votar. Rederigiendo al menu principal...");
+                    return;
+                }
+
+            } else {
+                scanner.next();
+                System.out.println("Ingrese un numero valido!");
+            }
+        }
+    }
+
+    public static void firstReport() {
+
+    }
+
+    public static void secondReport() {
+
+    }
+
+    public static void thirdReport() {
 
     }
 }
