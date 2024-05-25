@@ -5,6 +5,7 @@
 package tareatresjava;
 
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  *
@@ -47,7 +48,51 @@ public class TareaTresJava {
     }
 
     public static void sets() {
+        Random random = new Random();
 
+        int pointsPlayerA = 0;
+        int pointsPlayerB = 0;
+
+        while (true) {
+            int randomNumber = random.nextInt(2);
+
+            if (randomNumber == 0) {
+                pointsPlayerA++;
+                System.out.println("EL jugador A ha ganado un punto!");
+            } else {
+                pointsPlayerB++;
+                System.out.println("El jugador B ha ganado un punto!");
+            }
+
+            if (pointsPlayerA == 6 && pointsPlayerA - pointsPlayerB >= 2) {
+                System.out.println("Jugador A gana el Set!");
+                break;
+            } else if (pointsPlayerB == 6 && pointsPlayerB - pointsPlayerA >= 2) {
+                System.out.println("Jugador B gana el Set!");
+                break;
+            } else if (pointsPlayerA == 5 && pointsPlayerB == 5) {
+                System.out.println("Empate de Sets!");
+
+                while (true) {
+                    int randomNext = random.nextInt(2);
+
+                    if (randomNext == 0) {
+                        pointsPlayerA++;
+                        System.out.println("EL jugador A ha ganado un punto!");
+                    } else {
+                        pointsPlayerB++;
+                        System.out.println("El jugador B ha ganado un punto!");
+                    }
+                    if (pointsPlayerA >= 7 && pointsPlayerA - pointsPlayerB >= 2) {
+                        System.out.println("Jugador A gana el Set!");
+                        return;
+                    } else if (pointsPlayerB >= 7 && pointsPlayerB - pointsPlayerA >= 2) {
+                        System.out.println("Jugador B gana el Set!");
+                        return;
+                    }
+                }
+            }
+        }
     }
 
     public static void votes() {
